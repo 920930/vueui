@@ -65,7 +65,6 @@ const handleChange = () => {
   nextTick(() => {
     const inputEl = input.value as unknown as HTMLInputElement
     inputEl.checked = checked.value
-    console.log(inputEl)
   })
 }
 const setBackgroundColor = () => {

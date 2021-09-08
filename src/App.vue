@@ -6,7 +6,11 @@
 import { ref, watchEffect, inject } from "vue"
 const notify: any = inject('notify')
 const btn = () => {
-  notify('hah')
+  notify({
+    message: 'this is a notify, this is a notifythis is a notifythis is a notifythis is a notifythis is a notify',
+    duration: 0,
+    type: 'warning'
+  })
 }
 </script>
 

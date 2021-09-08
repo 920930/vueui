@@ -6,7 +6,7 @@ let seed = 1
 let pool :NotifyQueue = [];
 
 const Notify = (opts: NotifyParams) => {
-  if(typeof opts === 'string') opts = { title: opts }
+  if(typeof opts === 'string') opts = { message: opts }
 
   let offset = opts.offset || 20;
   pool.forEach(vm => {

@@ -2,7 +2,8 @@ import { VNode} from 'vue'
 
 export interface INotifyOptions {
   id?: string;
-  title: string;
+  title?: string;
+  message: string;
   type?: string;
   duration?: number;
   position?: string;
