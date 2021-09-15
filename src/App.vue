@@ -1,17 +1,13 @@
 <template>
-  <el-button @click="btn">提交</el-button>
+  <div class="init">
+    <el-date-picker></el-date-picker>
+    <div style="height: 600px; margin-top: 14px"></div>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, watchEffect, inject } from "vue"
-const notify: any = inject('notify')
-const btn = () => {
-  notify({
-    message: 'this is a notify, this is a notifythis is a notifythis is a notifythis is a notifythis is a notify',
-    duration: 0,
-    type: 'warning'
-  })
-}
+
 </script>
 
 <style>
@@ -23,8 +19,12 @@ const btn = () => {
 body{
   width: 100%;
   height: 100%;
+  overflow:auto
 }
 li{
   list-style: none;
+}
+.init{
+  width: 400px;
 }
 </style>

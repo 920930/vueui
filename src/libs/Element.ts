@@ -10,8 +10,9 @@ import Switch from '@/components/Switch/index.vue';
 import { Select, Option } from '../components/Select';
 import { Menu, MenuItem, SubMenu, MenuTree} from '../components/Menu';
 import Notification from '../components/Notification'
+import DatePicker from '../components/DatePicker';
 
-const components = [Button, Input, Dialog, Radio, RadioButton, Switch, Select, Option, Menu, MenuItem, SubMenu, MenuTree, Notification];
+const components = [Button, Input, Dialog, Radio, RadioButton, Switch, Select, Option, Menu, MenuItem, SubMenu, MenuTree, Notification, DatePicker];
 
 export default {
   install(app: App, options: any) {
