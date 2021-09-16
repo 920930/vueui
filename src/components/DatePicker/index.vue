@@ -5,9 +5,7 @@
       <i class="far fa-calendar-alt"></i>
     </div>
 
-    <div class="el-date-picker">
-      <el-date></el-date>
-    </div>
+    <el-date></el-date>
   </div>
 </template>
 
@@ -56,17 +54,6 @@ defineProps({
       transform: translateY(-50%);
       color: rgba(0, 0, 0, .5);
     }
-  }
-  .el-date-picker{
-    position: absolute;
-    // display: none;
-    width: 100%;
-    height: 180px;
-    padding: 10px;
-    box-sizing: border-box;
-    box-shadow: 0 0 6px rgba(0, 0, 0, .3);
-    transition: 1s;
-    background-color: white;
   }
 }
 </style>
