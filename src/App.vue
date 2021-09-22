@@ -1,10 +1,15 @@
 <template>
   <div class="init">
-    <el-magn></el-magn>
+    <el-swiper>
+      <el-swiper-slide v-for="(item, index) in swiperData" :key="index">
+        <img :src="item.url" :alt="item.title">
+      </el-swiper-slide>
+    </el-swiper>
   </div>
 </template>
 
 <script lang="ts" setup>
+import {swiperData} from './data/swiper'
 </script>
 
 <style>
@@ -23,5 +28,7 @@ li{
 }
 .init{
   margin: 150px;
+  width: 520px;
+  height: 280px;
 }
 </style>

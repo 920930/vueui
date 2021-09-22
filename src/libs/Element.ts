@@ -11,9 +11,12 @@ import { Select, Option } from '../components/Select';
 import { Menu, MenuItem, SubMenu, MenuTree} from '../components/Menu';
 import Notification from '../components/Notification'
 import DatePicker from '../components/DatePicker';
-import Magn from '../components/Magnifier'
+import Magn from '../components/Magnifier';
+import { swiper, slide } from '../components/Swiper';
 
-const components = [Button, Input, Dialog, Radio, RadioButton, Switch, Select, Option, Menu, MenuItem, SubMenu, MenuTree, Notification, DatePicker, Magn];
+const components = [Button, Input, Dialog, Radio, RadioButton, Switch, Select, Option, Menu, MenuItem, SubMenu, MenuTree, Notification, DatePicker, Magn,
+  swiper, slide
+];
 
 export default {
   install(app: App, options: any) {
