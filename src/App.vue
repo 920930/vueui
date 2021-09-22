@@ -1,13 +1,14 @@
 <template>
   <div class="init">
-    <el-date-picker></el-date-picker>
+    <el-date-picker v-model='date'></el-date-picker>
     <div style="height: 600px; margin-top: 14px"></div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, watchEffect, inject } from "vue"
-
+const date = ref('')
+watchEffect(() => console.log(date.value))
 </script>
 
 <style>

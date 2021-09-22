@@ -1,11 +1,11 @@
 <template>
   <div class="el-date" v-picker>
     <div class="el-date-input">
-      <input type="text" :class="size?'el-date' + size:''">
+      <input type="text" :class="size?'el-date' + size:''" v-model='modelValue'>
       <i class="far fa-calendar-alt"></i>
     </div>
 
-    <el-date></el-date>
+    <el-date v-model='date'></el-date>
   </div>
 </template>
 
@@ -20,13 +20,19 @@ export default {
 </script>
 
 <script lang='ts' setup>
-import { ref } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import type { PropType } from 'vue'
 import ElDate from './date.vue'
-defineProps({
+const props = defineProps({
+  modelValue: {
+    type: String,
+    defalut: ''
+  },
   size: String as PropType<ComponentSize>
 })
-
+const date = ref('')
+const emit = defineEmits(['update:modelValue'])
+watchEffect(() => emit('update:modelValue', date.value))
 </script>
 
 <style lang='less' scoped>

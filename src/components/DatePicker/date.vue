@@ -13,9 +13,9 @@
     </div>
     <ul class="el-date-weeks">
       <li v-for="(week, index) in weeks" :key="index">{{week}}</li>
-      <li class="gray" v-for="item in beforeMonthDates" :key='item.month-item.date'>{{item.date}}</li>
-      <li :class="{'current': showMonth === item.month && nowDate === item.date}" v-for="item in getNowMonthDate" :key='item.month-item.date'>{{item.date}}</li>
-      <li class="gray" v-for="item in nextMonthDates" :key='item.month-item.date'>{{item.date}}</li>
+      <li @click="dateBtn(item)" class="gray" v-for="item in beforeMonthDates" :key='item.month-item.date'>{{item.date}}</li>
+      <li @click="dateBtn(item)" :class="{'current': showMonth === item.month && nowDate === item.date}" v-for="item in getNowMonthDate" :key='item.month-item.date'>{{item.date}}</li>
+      <li @click="dateBtn(item)" class="gray" v-for="item in nextMonthDates" :key='item.month-item.date'>{{item.date}}</li>
     </ul>
   </div>
 </template>
@@ -27,7 +27,13 @@ export default{
 </script>
 
 <script lang='ts' setup>
-import { ref, watch, computed } from 'vue'
+type dateType = {
+  year: number;
+  month: number;
+  date: number
+}
+import { type } from 'os';
+import { ref, watch, computed } from 'vue';
 import {
   nowYear,
   nowMonth,
@@ -40,14 +46,29 @@ import {
   beforeBtn,
   nextBtn
 } from './date';
+
+defineProps({
+  modelValue: {
+    type: String,
+    defalut: ''
+  },
+})
+const emit = defineEmits(['update:modelValue'])
+
+
 let beforeMonthDates = computed(() => getBeforeMonth.value.dates);
 let nextMonthDates = computed(() => getNextMonth.value.dates);
+
+const dateBtn = (item: dateType) => {
+  let value = `${item.year}-${item.month}-${item.date}`
+  emit('update:modelValue', value)
+}
 </script>
 
 <style lang='less' scoped>
 .el-date-picker{
     position: absolute;
-    // display: none;
+    display: none;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -70,6 +91,7 @@ let nextMonthDates = computed(() => getNextMonth.value.dates);
       border-bottom: 1px solid rgba(0, 0, 0, .2);
       text-align: center;
       line-height: 50px;
+      cursor: pointer;
       &:nth-child(-n+7){
         border-top: 1px solid rgba(0, 0, 0, .2);
       }
@@ -81,6 +103,10 @@ let nextMonthDates = computed(() => getNextMonth.value.dates);
       }
       &.gray{
         color: rgba(0, 0, 0, .5);
+      }
+      &:nth-child(n+8):hover{
+        color: white;
+        background-color: sienna;
       }
     }
   }

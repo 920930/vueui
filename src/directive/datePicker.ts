@@ -1,4 +1,3 @@
-import { watch, ref, watchEffect } from "vue";
 import { DirectiveBinding } from "vue"
 
 export default {
@@ -6,12 +5,21 @@ export default {
     let oPicker = el.querySelector('.el-date-picker') as HTMLDivElement
     let oInput = el.querySelector('input') as HTMLInputElement
     
-    oInput.addEventListener('focus', () => {
-      oPicker.style.display = 'block'
+    el.addEventListener('click', (e) =>{
+      let tar = e.target as HTMLElement;
+      let parentNode = tar.parentNode as HTMLUListElement
+      let nodeChilds = Array.from(parentNode.children)
+      let tagName = tar.tagName
+
+      if(tagName === 'LI' && nodeChilds.indexOf(tar) > 6) {
+        setTimeout(() => {
+          oPicker.style.display = 'none'
+        }, 200)
+      }
     })
 
-    oInput.addEventListener('blur', () => {
-      oPicker.style.display = 'none'
+    oInput.addEventListener('focus', () => {
+      oPicker.style.display = 'block'
     })
   }
 }
